@@ -13,6 +13,9 @@ secrets become revealed!
 
 // A place to store the jQuery selection of all spans
 let $spans;
+let $hidden;
+let score = 0;
+let win = "YOU WIN!!!!"
 
 // When the document is loaded we call the setup function
 $(document).ready(setup);
@@ -25,8 +28,13 @@ function setup() {
   $spans = $('span');
   // Set a click handler on the spans (so we know when they're clicked)
   $spans.on('click',spanClicked);
+
+  $hidden = $('.hidden');
+
+  $hidden.on('mouseover',finder);
   // Set an interval of 500 milliseconds to update the state of the page
   setInterval(update,500);
+
 };
 
 // spanClicked()
@@ -38,6 +46,10 @@ function spanClicked() {
   $(this).addClass('redacted');
 }
 
+function secretFound (){
+  $(this).removeClass('hidden');
+  $(this).addClass('found');
+}
 // update()
 //
 // Update is called every 500 milliseconds and it updates all the spans on the page
@@ -80,3 +92,17 @@ function updateSpan() {
 //     });
 //   },500);
 // });
+//
+function finder() {
+  $(this).removeClass('hidden');
+  $(this).addClass('found');
+
+  if ($(this).off('mouseover')){
+    score++;
+    console.log(score);
+    $('#textScore').text(score);
+  }
+  if (score === 10){
+    $('#youWin').text(win);
+  }
+}

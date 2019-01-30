@@ -27,11 +27,33 @@ div {
 .revealed {
   background-color: transparent;
   text-decoration: underline;
-  color: red
+  color: red;
 }
 
 .found {
   background-color: yellow;
-  color: transparent;
+  text-decoration: underline;
+  color: red;
+}
+
+.hidden {
+  background-color: transparent;
   text-decoration: none;
+  color: black;
+}
+
+
+#textScore {
+  text-align: left;
+  font-size: 50;
+  text-decoration: none;
+  color: black;
+  background-color: transparent;
+}
+
+#youWin {
+  font-size: 50;
+  text-decoration: none;
+  color: black;
+  background-color: transparent;
 }
